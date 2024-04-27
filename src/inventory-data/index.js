@@ -44,8 +44,8 @@ const InventoryData = (props) => {
 
     return (
         <Box mt={3}>
-            {error || error == null ? <Box display="flex" justifyContent="center">
-                <Typography variant="body1" color="inherit">{"Data not Found!"}</Typography>
+            {error || storeData?.length <= 0 ? <Box display="flex" justifyContent="center">
+                <Typography variant="body1" color="inherit">Data not Found!</Typography>
             </Box> : <TableContainer className={classes.tableContainer}>
                 <Table aria-label="simple table">
                     <TableHead>

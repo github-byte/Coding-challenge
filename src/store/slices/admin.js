@@ -28,7 +28,6 @@ const slice = createSlice({
             let outOfStocks = 0;
             let totalPrice = 0;
             state.data = data;
-            state.error = {}
             const filteredData = data?.filter((item) => !item.disabled)
             filteredData.forEach((item) => {
                 const { category = '', quantity = 0, value = '' } = item || {};
