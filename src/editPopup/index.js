@@ -17,16 +17,12 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
     const [formData, setFormData] = useState({ category, price: getPrice(price), quantity, value: getPrice(value), disabled })
     const handleEdit = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
-        // handleClose()
     }
     const handleSave = () => {
         let updateFormData = [...data]
-        // const { category = '', price = '', quantity = 0, value = 0 } = formData || {}
-        // updateFormData[index] = {...formData}
         if (updateFormData[index]) {
             updateFormData[index] = { ...formData, name, price: `$${formData?.price}`, value: `$${formData?.value}` }
         }
-        console.log("in handle save", data, updateFormData[index], formData, updateFormData, index, updateFormData)
         updateData(updateFormData)
         handleClose()
     }
@@ -43,6 +39,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                             id="category"
                             className={classes.textFields}
                             value={formData?.category}
+                            sx={{color:textColor}}
                             onChange={handleEdit}
 
                         />
@@ -54,6 +51,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                             className={classes.textFields}
                             value={formData?.price}
                             onChange={handleEdit}
+                            sx={{color:textColor}}
 
                         />
                     </Box>
@@ -66,7 +64,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                             id="quantity"
                             value={formData?.quantity}
                             onChange={handleEdit}
-
+                            sx={{color:textColor}}
                         />
                     </Box>
                     <Box mt={1}>
@@ -76,6 +74,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                             className={classes.textFields}
                             value={formData?.value}
                             onChange={handleEdit}
+                            sx={{color:textColor}}
                         />
                     </Box>
                 </Box>
