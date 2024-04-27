@@ -22,6 +22,9 @@ const slice = createSlice({
         hasError(state, action) {
             state.error = action.payload?.err;
         },
+        loadFalse(state, action){
+            state.isLoading = action.payload;
+        },
         setData(state, action) {
             const { data = [] } = action.payload || {};
             const categories = {};
@@ -61,11 +64,13 @@ export const getInventoryData = async () => {
         }
         else {
             dispatch(slice.actions.hasError({ err: error }))
+            dispatch(slice.actions.loadFalse(false))
         }
         console.log("inside api data2323", response)
 
     } catch (error) {
         dispatch(slice.actions.hasError({ err: "Something went wrong" }))
+        dispatch(slice.actions.loadFalse(false))
     }
 }
 
