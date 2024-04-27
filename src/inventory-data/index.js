@@ -6,14 +6,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Skeleton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import EditModal from '../editPopup';
 import { headCells } from '../constants';
 import { green, purple, red } from '@mui/material/colors';
 
 const InventoryData = (props) => {
     const classes = useStyles();
-    let { data: storeData = [], error = "" } = useSelector((state) => state?.admin)
+    let { data: storeData = [], error = "", isLoading = false } = useSelector((state) => state?.admin)
     let { toggleState = "" } = useSelector((state) => state?.storeView)
     const [openEdit, setOpenEdit] = useState(false)
     const [editContent, setEditContent] = useState({})
@@ -41,10 +41,10 @@ const InventoryData = (props) => {
         }
         updateData(newDataList)
     }
-
+    if(isLoading) return <Box mt={2}><Skeleton width="100%" height={200}></Skeleton></Box>
     return (
         <Box mt={3}>
-            {error || storeData?.length <= 0 ? <Box display="flex" justifyContent="center">
+            {(error || storeData?.length <= 0) ? <Box display="flex" justifyContent="center">
                 <Typography variant="body1" color="inherit">Data not Found!</Typography>
             </Box> : <TableContainer className={classes.tableContainer}>
                 <Table aria-label="simple table">

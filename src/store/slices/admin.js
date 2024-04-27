@@ -27,6 +27,7 @@ const slice = createSlice({
             const categories = {};
             let outOfStocks = 0;
             let totalPrice = 0;
+            state.isLoading = false;
             state.data = data;
             const filteredData = data?.filter((item) => !item.disabled)
             filteredData.forEach((item) => {
