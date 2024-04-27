@@ -1,1 +1,2 @@
 export const headCells = [{ name: "Name" }, { name: "Category" }, { name: "Price" }, { name: "Quantity" }, { name: "Value" }, { name: "Action" }];
+export const url = "https://dev-0tf0hinghgjl39z.api.raw-labs.com/inventory"

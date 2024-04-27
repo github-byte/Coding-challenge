@@ -1,11 +1,11 @@
 import { hexToRgb } from '@mui/material';
-import { lime } from '@mui/material/colors';
+import { grey, lime } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
     tableContainer: {
         borderRadius: 8,
-        backgroundColor: hexToRgb("#212529"),
+        backgroundColor: theme.palette.mode === "dark" ? grey[900] : grey[200],
         opacity: 0.9
     },
     borderClass: {

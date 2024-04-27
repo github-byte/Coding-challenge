@@ -5,7 +5,7 @@ import { dispatch } from '../../store';
 
 const initialState = {
     error: null,
-    toggleState: true,
+    toggleState: false,
     viewMode: true
 };
 

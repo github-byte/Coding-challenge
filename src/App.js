@@ -38,7 +38,7 @@ const App = () => {
     <div style={coloringPattern} className="App">
       <Box sx={{ padding: 2 }}>
         <Navbar colorMode={colorMode} />
-        <h1>Inventory stats</h1>
+        <h1 style={{ fontWeight: 400 }}>Inventory stats</h1>
         <InventoryStats />
         <InventoryData />
       </Box>

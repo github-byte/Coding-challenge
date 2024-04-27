@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from '../customComponent.js/modal'
-import { Box, Typography, TextField, ButtonGroup, Button, FormLabel } from '@mui/material'
+import { Box, Typography, TextField, ButtonGroup, Button, FormLabel, useTheme } from '@mui/material'
 import { lime } from '@mui/material/colors'
 import { getPrice } from '../utils'
 import { useSelector } from 'react-redux'
@@ -10,6 +10,8 @@ import useStyles from './styles'
 const EditModalBody = ({ editContent = {}, handleClose }) => {
     console.log("in modal2323", editContent)
     const classes = useStyles()
+    const theme = useTheme();
+    let textColor = theme.palette.mode === 'light' ? theme.palette.text.secondary : theme.palette.text.primary
     let { data = [] } = useSelector((state) => state.admin)
     const { name = '', category = '', price = '', quantity = '', value = '', index = 0, disabled = false } = editContent || {}
     const [formData, setFormData] = useState({ category, price: getPrice(price), quantity, value: getPrice(value), disabled })
@@ -31,12 +33,12 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
     return (
         <>
             <Box>
-                <Typography color={"text.primary"} variant="body1">{name}</Typography>
+                <Typography color={textColor} variant="body1">{name}</Typography>
             </Box>
             <Box mt={2}>
                 <Box display="flex" rowGap={2}>
                     <Box mt={1} mr={1}>
-                        <FormLabel sx={{ color: "text.primary", fontSize: 12, pl: 1 }}>Category</FormLabel>
+                        <FormLabel sx={{ color: textColor, fontSize: 12, pl: 1 }}>Category</FormLabel>
                         <TextField
                             id="category"
                             className={classes.textFields}
@@ -46,7 +48,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                         />
                     </Box>
                     <Box mt={1}>
-                        <FormLabel sx={{ color: "text.primary", fontSize: 12, pl: 1 }}>Price</FormLabel>
+                        <FormLabel sx={{ color: textColor, fontSize: 12, pl: 1 }}>Price</FormLabel>
                         <TextField
                             id="price"
                             className={classes.textFields}
@@ -58,7 +60,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                 </Box>
                 <Box display="flex" mt={1} rowGap={2}>
                     <Box mr={1} mt={1}>
-                        <FormLabel sx={{ color: "text.primary", fontSize: 12, pl: 1 }}>Quantity</FormLabel>
+                        <FormLabel sx={{ color: textColor, fontSize: 12, pl: 1 }}>Quantity</FormLabel>
                         <TextField
                             className={classes.textFields}
                             id="quantity"
@@ -68,7 +70,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
                         />
                     </Box>
                     <Box mt={1}>
-                        <FormLabel sx={{ color: "text.primary", fontSize: 12, pl: 1 }}>Value</FormLabel>
+                        <FormLabel sx={{ color: textColor, fontSize: 12, pl: 1 }}>Value</FormLabel>
                         <TextField
                             id="value"
                             className={classes.textFields}

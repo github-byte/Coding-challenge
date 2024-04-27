@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import EditModal from '../editPopup';
 import { headCells } from '../constants';
 import { green, purple, red } from '@mui/material/colors';
@@ -21,12 +21,12 @@ const InventoryData = (props) => {
         getInventoryData();
     }, [])
     const handleEdit = (item, index) => {
-        if(!toggleState || item?.disabled) return;
+        if(toggleState || item?.disabled) return;
         setOpenEdit(true)
         setEditContent({ ...item, index })
     }
     const handleDelete = (index) => {
-        if(!toggleState) return;
+        if(toggleState) return;
         let newData = [...storeData]
         newData.splice(index, 1)
         updateData(newData)
@@ -34,18 +34,19 @@ const InventoryData = (props) => {
     }
 
     const handleViewModes = (index, item = {}, disabled = false) => {
-        if(!toggleState) return;
+        if(toggleState) return;
         let newDataList =  [...storeData]
         if(newDataList[index]){
             newDataList[index] = {...item, disabled: !disabled}
         }
-        console.log("in view modes122",newDataList, index)
         updateData(newDataList)
     }
 
     return (
         <Box mt={3}>
-            {<TableContainer className={classes.tableContainer}>
+            {error || error == null ? <Box display="flex" justifyContent="center">
+                <Typography variant="body1" color="inherit">{"Data not Found!"}</Typography>
+                </Box> : <TableContainer className={classes.tableContainer}>
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow className={classes.borderClass}>
@@ -72,10 +73,10 @@ const InventoryData = (props) => {
                                 <TableCell className={index !== storeData?.length - 1 && classes.borderClass} sx={{ color: "inherit" }} >{value}</TableCell>
                                 <TableCell className={index !== storeData?.length - 1 && classes.borderClass} sx={{ color: "inherit" }} >
                                     <Box display={"flex"} gap={1}>
-                                        <EditIcon sx={{ cursor: "pointer", color: (!toggleState || disabled) ? "grey" : green[400] }} onClick={() => handleEdit(row, index)} />
-                                        {!disabled ? <VisibilityIcon sx={{cursor: "pointer", color: !toggleState ? "grey" : purple[200] }} onClick={() => handleViewModes(index, row, disabled)} />
-                                            : <VisibilityOffIcon  sx={{cursor: "pointer", color: !toggleState ? "grey" : purple[200] }}  onClick={() => handleViewModes(index, row, disabled)} />}
-                                        <DeleteIcon  sx={{cursor: "pointer", color: !toggleState ? "grey" : red[400] }}  onClick={() => handleDelete(index)} />
+                                        <EditIcon sx={{ cursor: "pointer", color: (toggleState || disabled) ? "grey" : green[400] }} onClick={() => handleEdit(row, index)} />
+                                        {!disabled ? <VisibilityIcon sx={{cursor: "pointer", color: toggleState ? "grey" : purple[200] }} onClick={() => handleViewModes(index, row, disabled)} />
+                                            : <VisibilityOffIcon  sx={{cursor: "pointer", color: toggleState ? "grey" : purple[200] }}  onClick={() => handleViewModes(index, row, disabled)} />}
+                                        <DeleteIcon  sx={{cursor: "pointer", color: toggleState ? "grey" : red[400] }}  onClick={() => handleDelete(index)} />
                                     </Box>
                                 </TableCell>
                             </TableRow>)

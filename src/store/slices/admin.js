@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { dispatch } from '../../store';
+import { url } from '../../constants';
 // ----------------------------------------------------------------------
 
 const initialState = {
@@ -27,6 +28,7 @@ const slice = createSlice({
             let outOfStocks = 0;
             let totalPrice = 0;
             state.data = data;
+            state.error = {}
             const filteredData = data?.filter((item) => !item.disabled)
             filteredData.forEach((item) => {
                 const { category = '', quantity = 0, value = '' } = item || {};
@@ -49,7 +51,7 @@ const slice = createSlice({
 
 export const getInventoryData = async () => {
     try {
-        const response = await axios.get("https://dev-0tf0hinghgjl39z.api.raw-labs.com/inventory")
+        const response = await axios.get(url)
         let { data = [], error = "" } = response || {};
         if (data.length > 0) {
             data.forEach((item) => {
