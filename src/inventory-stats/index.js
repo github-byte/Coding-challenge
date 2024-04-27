@@ -22,7 +22,7 @@ const InventoryStats = (props) => {
         newArr[2].value = numOfOutOfStocks
         newArr[3].value = numOfCategories
         setStatsArr(newArr)
-    }, [storeData, totalProducts, numOfCategories, numOfOutOfStocks])
+    }, [storeData, totalProducts, numOfCategories, numOfOutOfStocks, totalPrice])
     const theme = useTheme();
     const mwebView = useMediaQuery(theme.breakpoints.down('md'));
     return (

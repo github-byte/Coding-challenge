@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from '../customComponent.js/modal'
-import { Box, Typography, TextField, ButtonGroup, Button, FormLabel, useTheme } from '@mui/material'
+import { Box, Typography, TextField, Button, FormLabel, useTheme } from '@mui/material'
 import { lime } from '@mui/material/colors'
 import { getPrice } from '../utils'
 import { useSelector } from 'react-redux'
@@ -21,7 +21,7 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
     }
     const handleSave = () => {
         let updateFormData = [...data]
-        const { category = '', price = '', quantity = 0, value = 0 } = formData || {}
+        // const { category = '', price = '', quantity = 0, value = 0 } = formData || {}
         // updateFormData[index] = {...formData}
         if (updateFormData[index]) {
             updateFormData[index] = { ...formData, name, price: `$${formData?.price}`, value: `$${formData?.value}` }
