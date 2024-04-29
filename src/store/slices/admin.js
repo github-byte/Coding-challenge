@@ -75,7 +75,6 @@ export const getInventoryData = async () => {
 }
 
 export const updateData = (newData) => {
-    console.log("in update data", newData)
     dispatch(slice.actions.setData({ data: newData }))
 }
 

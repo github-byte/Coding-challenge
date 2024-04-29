@@ -24,7 +24,6 @@ const Navbar = ({ colorMode = {} }) => {
                     <Typography variant="body1">Admin</Typography>
                     <Toggle checked={toggleState} onChange={(e) => handeToggleState(!toggleState)} />
                     <Typography variant="body1">User</Typography>
-                    {/* <Box ml={2}>Logout</Box> */}
                 </Box>
             </Box>
         </>

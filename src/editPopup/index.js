@@ -88,7 +88,6 @@ const EditModalBody = ({ editContent = {}, handleClose }) => {
 }
 const EditModal = (props) => {
     const { open = false, handleClose = () => { } } = props || {}
-    console.log("Edit Modal", open, props)
     return (<Modal {...props} title='Edit Product' open={open} modalContent={<EditModalBody {...props} />} handleClose={handleClose} />)
 
 }

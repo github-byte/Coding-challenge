@@ -15,7 +15,6 @@ const InventoryStats = (props) => {
     const storeData = useSelector((state) => state?.admin)
     const { totalProducts = 0, numOfCategories = 0, numOfOutOfStocks = 0, totalPrice = 0 } = storeData || {}
     useEffect(() => {
-        console.log("data2323", storeData)
         const newArr = [...statsArr]
         newArr[0].value = totalProducts
         newArr[1].value = totalPrice
