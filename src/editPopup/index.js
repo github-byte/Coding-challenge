@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from '../customComponent.js/modal'
+import Modal from '../customComponent/modal'
 import { Box, Typography, TextField, Button, FormLabel, useTheme } from '@mui/material'
 import { lime } from '@mui/material/colors'
 import { getPrice } from '../utils'

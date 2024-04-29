@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography, useTheme } from '@mui/material';
-import { Toggle } from '../customComponent.js/toggle';
+import { Toggle } from '../customComponent/toggle';
 import { useSelector } from 'react-redux';
 import { handeToggleState } from '../store/slices/storeView';
 import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
